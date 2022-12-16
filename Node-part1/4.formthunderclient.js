@@ -2,7 +2,6 @@ const http = require("http")
 const qs=require("querystring")
 const DATA=[]
 
-
 http.createServer((req, res) => {
     console.log("Server is running")
     console.log("pathname:", req.url)
