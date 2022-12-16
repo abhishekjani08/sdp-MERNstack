@@ -10,8 +10,14 @@ mongoose.connect("mongodb://127.0.0.1:27017/sdp_db", (error)=>{
         console.log("connnection established")
 })
 const app= express()
-app.get("/greetings",(req,res)=>{
-    res.status(201).send("Hello world")
+app.get("/todos",(req,res)=>{
+    return Todo.find()
+    .then(data=>{
+        res.status(200).json({
+           todo:data
+
+        })
+    })
 })
 
 app.get("/todos.js", (req,res)=>{
