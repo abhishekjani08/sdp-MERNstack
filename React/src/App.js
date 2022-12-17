@@ -1,6 +1,18 @@
 import './App.css';
-import { useState, useRef, useEffect, useMemo,memo } from 'react';
+import Item from './Item'
+import { useState, useRef, useEffect, useMemo, memo } from 'react';
 const jsx = <h1> Jani</h1>
+
+const initialItems = Array(10).fill().map((x, i) => ({
+  index: `${i}`,
+  text:`item at index ${i}`
+  }))
+  
+  const paginatedItems = Array(10).fill().map((x, i) => ({
+    index: `${i}`,
+    text:`item at index 1${i}`
+    }) )
+    
 function App() {
   //1. const [inputHolder, setInputText] = useState("")
 
@@ -68,9 +80,9 @@ function App() {
   // setCount((x)=> x+1)
   // }
   //    console.log("Memoized Count ",memoizedCount)
-  
+
   //-------------------------------------------------------------------------
-  
+
   // 6. const [count,setCount]=useState(true)
   // function updateCount(){
   //   setCount((x)=> x+1)
@@ -88,72 +100,53 @@ function App() {
   //     if (prev == next)
   //       return true
   //   })
-//prev === next agr false hua toh render hoga 
-//agr true hoga toh render nai hoga
+  //prev === next agr false hua toh render hoga 
+  //agr true hoga toh render nai hoga
 
 
-//---------------------------------------------------------
-//memo component
-//usememo variables values
-//callback functions
+  //---------------------------------------------------------
+  //memo component
+  //usememo variables values
+  //callback functions
 
-//--------------------------------------------------------------
-//7. const [count, setCount] = useState(0)
-// const [d, setD] = useState(false)
+  //--------------------------------------------------------------
+  //7. const [count, setCount] = useState(0)
+  // const [d, setD] = useState(false)
 
-// function updateCount() {
-//   setCount((x) => x+1)
-// }
+  // function updateCount() {
+  //   setCount((x) => x+1)
+  // }
 
-// const updateCountArrow = () => {
-//   console.log("Callback function called...")
-// }
+  // const updateCountArrow = () => {
+  //   console.log("Callback function called...")
+  // }
 
-// console.log("Count: ", count)
-// const UseCallbackExample = memo((props) => {
-//   console.log("Redndered becase of reference change of arrow function...")
-//   return null
-// })
+  // console.log("Count: ", count)
+  // const UseCallbackExample = memo((props) => {
+  //   console.log("Redndered becase of reference change of arrow function...")
+  //   return null
+  // })
 
-// const CouterPresentor = memo((props) => {
-//   const {count} = props
+  // const CouterPresentor = memo((props) => {
+  //   const {count} = props
 
-//   useEffect(() => {
-//     console.log("CounterPresentor Rendered...")
-//   })
+  //   useEffect(() => {
+  //     console.log("CounterPresentor Rendered...")
+  //   })
 
-//   return <div>
-//     {count}
-//   </div>
-// }, (prev, next) => {
-//   return prev === next
-// })
-
-const initialState = [
-  {id: 1, country: 'Austria'},
-  {id: 2, country: 'Belgium'},
-  {id: 3, country: 'Canada'},
-];
-const [data, setData] = useState(initialState);
-
-const updateState = () => {
-  // 👇️ passing function to setData method
-  setData(prevState => {
-    const newState = prevState.map(obj => {
-      // 👇️ if id equals 2, update country property
-      if (obj.id === 2) {
-        return {...obj, country: 'Denmark'};
-      }
-
-      // 👇️ otherwise return object as is
-      return obj;
-    });
-
-    return newState;
-  });
-};
+  //   return <div>
+  //     {count}
+  //   </div>
+  // }, (prev, next) => {
+  //   return prev === next
+  // })
 
 
+  const[Items, setItems] = useState(initialItems) 
+  function addNewItems() {
+    setItems((prevItems) => [...prevItems,...paginatedItems])
+   }
+ 
 
   return (
     <div className="App">
@@ -189,32 +182,25 @@ countRef.current ={}
   <p>Dummy State - {dummyvalue} CountState- {count} </p> */}
 
       {/* 5. <button onClick={updateCount}>USE MEMO Count</button>{count} */}
-      
-{/*      6.  
+
+      {/*      6.  
       <button onClick={updateCount}> MEMO Count</button> 
       <CounterPresentor count={count} />
  */}
 
 
- 
-    {/* 7. <button onClick={updateCount}>Update Count</button>
+
+      {/* 7. <button onClick={updateCount}>Update Count</button>
     <button onClick={() => setD((x) => !x)}>Render Callback Component</button>
     <CouterPresentor count={count} customObject={{
       "name": "swapnil"
     }}/>
     <UseCallbackExample updateCountArrow={updateCountArrow} /> */}
-
-<button onClick={updateState}>Update state</button>
-
-      {data.map(obj => {
-        return (
-          <div key={obj.id}>
-            <h2>id: {obj.id}</h2>
-            <h2>country: {obj.country}</h2>
-            <hr />
-          </div>
-        );
-      })}
+ <div>
+    <button onClick ={addNewItems}
+    >Append new items</button>
+    {Items.map((item) => <Item data={item} key={item.index} />)}
+   </div>
 
       <h1> Abhishek </h1>
       {jsx}
