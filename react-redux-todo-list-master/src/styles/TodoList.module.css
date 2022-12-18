@@ -1,0 +1,32 @@
+.todoList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.todo {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 0.5vw;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+}
+
+.todoContent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-right: 1vw;
+}
+
+.emptyTodo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-right: 1vw;
+}
