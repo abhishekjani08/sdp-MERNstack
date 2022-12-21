@@ -1,0 +1,78 @@
+use("nosqlDemoDB");
+// db.createCollection("janidb")
+
+// db.janidb.insertOne({firstName:"Abhishek", lastName:"Jani"})
+
+// db.janidb.insertMany([
+//   {firstName:"Rohan", lastName:"Jani"},
+//   {firstName:"Rahul", lastName:"Jani"},
+
+// ])
+
+// db.anishDB.find()
+
+// db.janidb.findOneAndUpdate(
+//       {
+//         firstName:"Abhishek"
+//       },
+//       {
+//         $set:{lastName:"Sanchez"}
+//       },
+//       {
+//         new:true,upsert:true
+//       }
+// );
+
+
+// db.janidb.updateMany(
+//       {
+//         firstName:"Abhishek"
+//       },
+//       {
+//         $set:{lastName:"Janii"}
+//       },
+//       {
+//         new:true,upsert:true
+//       }
+// );
+
+
+// db.janidb.updateMany(
+//       {
+//         firstName:"Abhishek"
+//       },
+//       {
+//         $rename:{lastName:"Janii"}
+//       },
+//       {
+//         new:true,upsert:true
+//       }
+// );
+
+// db.janidb.findOneAndUpdate(
+//       {
+//         firstName:"Abhishek"
+//       },
+//       {
+//         $push:{age:21}
+//       },
+//       {
+//         new:true,upsert:true
+//       }
+// );
+
+// use("sample_mflix");
+// db.movies.aggregate([
+//   {
+//     $match:{
+//       year:1983
+//     }
+//   },
+//   {
+//     $project:{genres:1,title:1}
+//   },
+//   {
+//     $limit:5
+//   },
+// ])
+
